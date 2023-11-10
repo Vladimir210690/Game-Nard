@@ -36,6 +36,11 @@ int w = 11;
 int x = 12;
 int y = 13;
 
+int whiteX[12]{38,38,38,38,38,38,38,38,38,38,38,38};
+int whiteY[12]{0,1,2,3,4,5,6,7,8,9,10,11};
+
+int blakX[12]{3,3,3,3,3,3,3,3,3,3,3,3};
+int blakY[12]{ 12,11,10,9,8,7,6,5,4,3,2,1 };
 
 
 void Draw()
@@ -177,8 +182,28 @@ void Draw()
 			}
 			else
 			{
-				cout << " ";
+				bool yas = false;
+
+				for (int f = 0; f < 12; f++)
+				{
+					if (whiteX[f] == j && whiteY[f] == i)
+					{
+						yas = true;
+						cout << "o";
+					}
+					else if (blakX[f] == j && blakY[f] == i)
+					{
+						yas = true;
+						cout << "@";
+					}
+				}
+			
+				if (yas == false)
+				{
+					cout << " ";
+				}
 			}
+		
 		}
 		cout << endl;
 	}
