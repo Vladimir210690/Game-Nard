@@ -177,21 +177,21 @@ void Draw()
 			else
 			{
 				bool yas = false;
-
-				for (int f = 0; f < 12; f++)
-				{
-					if (whiteX[f] == j && whiteY[f] == i)
+				
+					for (int f = 0; f < 12; f++)
 					{
-						yas = true;
-						cout << "o";
+						if (whiteX[f] == j && whiteY[f] == i)
+						{
+							yas = true;
+							cout << "o";
+						}
+						else if (blakX[f] == j && blakY[f] == i)
+						{
+							yas = true;
+							cout << "@";
+						}
 					}
-					else if (blakX[f] == j && blakY[f] == i)
-					{
-						yas = true;
-						cout << "@";
-					}
-				}
-			
+				
 				if (yas == false)
 				{
 					cout << " ";
@@ -237,18 +237,25 @@ void Logik()
 	cout << "Where Y: ";
 	cin >> whereY;
 	
-	for (int i = 0; i < COL; i++)
-	{
-		for (int j = 0; j < ROW; j++)
+
+		for (int j = 0; j < 12; j++)
 		{
-			if (whiteX[i] == fromX && whiteY[j] == fromY)
+			if (whiteX[j] == fromX && whiteY[j] == fromY)
 			{
-				whiteX[i] = whereX;
+			
+				whiteX[j] = whereX;
 				whiteY[j] = whereY;
 			}
-		
+			
+			else if (blakX[j] == fromX && blakY[j] == fromY)
+			{
+				blakX[j] = whereX;
+				blakY[j] = whereY;
+			}
+			
+			
 		}
-	}
+	
 }
 
 
