@@ -6,44 +6,38 @@ using namespace std;
 const int COL = 40;
 const int ROW = 13;
 
-char run1 = 0; 
-char run2 = 0; 
+int fromX = 0; // Позиция начала хода по X
+int fromY = 0; // Позиция начала хода по Y
 
-int a = 1; // РЎРѕР·РґР°СЋ РєРѕРѕСЂРґРёРЅР°С‚С‹ РґР»СЏ РїРµСЂРµРјРµС‰РµРЅРёСЏ С„РёС€РµРє
-int b = 2;
-int c = 3;
-int d = 4;
-int e = 5;
-int f = 6;
-int g = 7;
-int h = 8;
-int i = 9;
-int j = 10;
-int k = 11;
-int l = 12;
+int whereX = 0; // Позиция конца хода по X
+int whereY = 0; // Позиция конца хода по Y
 
-int m = 1;
-int n = 2;
-int o = 3;
-int p = 4;
-int q = 5;
-int r = 6;
-int s = 7;
-int t = 8;
-int u = 9;
-int v = 10;
-int w = 11;
-int x = 12;
-int y = 13;
+int cube1 = 0; // Первый кубик
+int cube2 = 0; // Второй кубик
 
-int whiteX[12]{38,38,38,38,38,38,38,38,38,38,38,38}; // РљРѕРѕСЂРґРёРЅР°С‚С‹ РїРѕР»РѕР¶РµРЅРёСЏ Р±РµР»С‹С… С„РёС€РµРє
+char name1[10]; // Имена игроков
+char name2[10];
+char winner[10]; // Имя победителя
+
+bool gameOwer = false; // Переменная завершения игры
+
+
+int a = 4; int b = 7; int c = 10; int d = 13;
+int e = 16; int f = 19; int g = 22; int h = 25; int i = 28;
+int j = 31; int k = 34; int l = 37;
+
+int m = 0; int n = 1; int o = 2; int p = 3;
+int q = 4; int r = 5; int s = 6; int t = 7;
+int u = 8; int v = 9; int w = 10; int x = 11; int y = 12;
+
+int whiteX[12]{38,38,38,38,38,38,38,38,38,38,38,38};
 int whiteY[12]{0,1,2,3,4,5,6,7,8,9,10,11};
 
-int blakX[12]{3,3,3,3,3,3,3,3,3,3,3,3}; // РљРѕРѕСЂРґРёРЅР°С‚С‹ РїРѕР»РѕР¶РµРЅРёСЏ С‡РµСЂРЅС‹С… С„РёС€РµРє
+int blakX[12]{3,3,3,3,3,3,3,3,3,3,3,3};
 int blakY[12]{ 12,11,10,9,8,7,6,5,4,3,2,1 };
 
 
-void Draw() // РћС‚СЂРёСЃРѕРІРєР° РёРіСЂРѕРІРѕРіРѕ РїРѕР»СЏ Рё РёРіСЂРѕРІС‹С… С„РёС€РµРє
+void Draw()
 {
 	system("cls");
 
@@ -184,7 +178,7 @@ void Draw() // РћС‚СЂРёСЃРѕРІРєР° РёРіСЂРѕРІРѕРіРѕ РїРѕР»СЏ Рё РёРіСЂРѕРІС‹С… С„
 			{
 				bool yas = false;
 
-				for (int f = 0; f < 12; f++) // РћС‚СЂРёСЃРѕРІРєР° С‚РµРєСѓС‰РµРіРѕ РїРѕР»РѕР¶РµРЅРёСЏ С„РёС€РµРє
+				for (int f = 0; f < 12; f++)
 				{
 					if (whiteX[f] == j && whiteY[f] == i)
 					{
@@ -224,11 +218,46 @@ void Draw() // РћС‚СЂРёСЃРѕРІРєР° РёРіСЂРѕРІРѕРіРѕ РїРѕР»СЏ Рё РёРіСЂРѕРІС‹С… С„
 }
 
 
+void Logik()
+{
+	system("pause");
+	
+	cout << "From X: ";
+	cin >> fromX;
+
+	
+	cout << "From Y: ";
+	cin >> fromY;
+	
+	
+	cout << "Where X: ";
+	cin >> whereX;
+	
+	
+	cout << "Where Y: ";
+	cin >> whereY;
+	
+	for (int i = 0; i < COL; i++)
+	{
+		for (int j = 0; j < ROW; j++)
+		{
+			if (whiteX[i] == fromX && whiteY[j] == fromY)
+			{
+				whiteX[i] = whereX;
+				whiteY[j] = whereY;
+			}
+		
+		}
+	}
+}
+
+
 int main()
 {
-	while (true)
+	while (!gameOwer)
 	{
 		Draw();
+		Logik();
 	}
 	return 0;
 }
