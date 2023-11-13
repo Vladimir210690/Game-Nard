@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include <ctime>
 
 using namespace std;
 
@@ -419,6 +420,8 @@ void Logik()
 
 int main()
 {
+	srand(time(NULL));
+	setlocale(LC_ALL, "RU");
 	cout << "Input gamer name 1: ";
 	cin >> name1;
 
