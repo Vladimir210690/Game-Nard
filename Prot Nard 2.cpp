@@ -1,5 +1,4 @@
 #include <iostream>
-#include <conio.h>
 #include <ctime>
 
 using namespace std;
@@ -383,11 +382,15 @@ void Motion()
 		cout << "Where Y: ";
 		cin >> whereY;
 
-		Step();
-
+		if (fromX > whereX) {
+			Step();
+		}
+		else if (fromX < whereX) {
+			Step1();
+		}
+		
 		for (int j = 0; j < 12; j++)
 		{
-
 			if (whiteX[j] == fromX && whiteY[j] == fromY && go == true)
 			{
 				whiteX[j] = whereX;
@@ -430,7 +433,12 @@ void Motion()
 		cout << "Where Y: ";
 		cin >> whereY;
 
-		Step1();
+		if (fromX > whereX) {
+			Step();
+		}
+		else if (fromX < whereX) {
+			Step1();
+		}
 
 		for (int j = 0; j < 12; j++)
 		{
